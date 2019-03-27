@@ -8,6 +8,7 @@ import {
   Segment,
   Grid,
   Icon,
+  Image,
   Menu
 } from "semantic-ui-react";
 
@@ -71,12 +72,16 @@ class App extends Component {
 
   undoLastTeam1Score = () => {
     const { team_1_score, team_1_lastScore } = this.state;
-    this.setState({ team_1_score: team_1_score - team_1_lastScore });
+    if (team_1_score !== 0) {
+      this.setState({ team_1_score: team_1_score - team_1_lastScore });
+    }
   };
 
   undoLastTeam2Score = () => {
     const { team_2_score, team_2_lastScore } = this.state;
-    this.setState({ team_2_score: team_2_score - team_2_lastScore });
+    if (team_2_score !== 0) {
+      this.setState({ team_2_score: team_2_score - team_2_lastScore });
+    }
   };
 
   restartMatch = event => {
@@ -95,7 +100,10 @@ class App extends Component {
       <React.Fragment>
         <Menu borderless className="bg-color">
           <Menu.Item>
-            <Header color="white" size="small">Covenant University Basketball App</Header>
+            {/* <Image src='./CU-Logo_imagelarge.png' /> */}
+            <Header color="white" size="small">
+              Covenant University Basketball App
+            </Header>
           </Menu.Item>
         </Menu>
         <Modal
